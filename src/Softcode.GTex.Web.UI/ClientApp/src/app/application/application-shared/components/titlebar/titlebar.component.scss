@@ -1,0 +1,86 @@
+$toolbar-background-color: #034c7e;
+$toolbar-color: #ffffff;
+
+:host {
+  .toolbar-outer-area {
+    background-color: $toolbar-background-color;
+    font-size: 12px;
+    height: 32px;
+    position: fixed;
+    z-index: 10;
+    margin-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 5px;
+    top: 41px;
+    left: 200px;
+    right: 0;
+    -webkit-box-shadow: 0 5px 5px -5px #bdcddf;
+    -moz-box-shadow: 0 5px 5px -5px #bdcddf;
+    box-shadow: 0 5px 5px -5px #bdcddf;
+
+    .dx-toolbar {
+      background-color: $toolbar-background-color;
+    }
+  }
+
+  .toolbar-outer-area-tab-page {
+    background-color: $toolbar-background-color;
+    font-size: 12px;
+    height: 30px;
+    //position: fixed;
+    z-index: 300;
+    margin-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 5px;
+    left: 0px !important;
+    right: 0;
+  }
+
+  .toolbar-custom-area {
+    background-color: $toolbar-background-color !important;
+    padding-right: 20px;
+  }
+}
+
+/deep/ .dx-button {
+  border: none !important;
+}
+
+/deep/ .dx-button-has-text {
+  .dx-button-content {
+    padding: 0 8px !important;
+    font-size: 12px;
+    border-radius: 0 !important;
+    color: $toolbar-color;
+    background-color: $toolbar-background-color !important;
+    border-right: 1px solid #30599f;
+  }
+}
+
+/deep/.dx-button-has-text .dx-button-content:hover {
+  color: #5473a8;
+}
+
+/deep/.dx-button .dx-button-content {
+  font-size: 13px;
+}
+
+/deep/.dx-button-has-text .dx-icon {
+  margin-right: 3px;
+  color: $toolbar-color !important;
+  font-size: 14px;
+}
+
+/deep/.dx-button-has-text .dx-button-content:hover .dx-icon {
+  color: #5473a8 !important;
+}
+
+/deep/.dx-toolbar-item:nth-last-child(-n+2) .dx-button-content {
+  border-right: none;
+}
+
+/deep/.dx-toolbar-menu-section .dx-toolbar-item-auto-hide {
+  padding: 0 0 !important;
+  color: black;
+  background-color: $toolbar-background-color;
+}

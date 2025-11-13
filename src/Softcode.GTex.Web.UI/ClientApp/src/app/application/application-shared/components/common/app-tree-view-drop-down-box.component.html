@@ -1,0 +1,26 @@
+ 
+<dx-drop-down-box [disabled]="disabled" [(value)]="treeBoxValue"
+                  valueExpr="sId"
+                  displayExpr="name"
+                  placeholder="Select a value..."
+                  [showClearButton]="true"
+                  [dataSource]="treeDataSource"
+                   [(opened)]="isDropDownBoxOpened"
+                  (onValueChanged)="syncTreeViewSelection($event)">
+
+    <div *dxTemplate="let data of 'content'">
+        <dx-tree-view [height]="250"
+                      [dataSource]="treeDataSource"
+                      dataStructure="plain"
+                      keyExpr="sId"
+                      parentIdExpr="sParentId"
+                      selectionMode="single"
+                      displayExpr="name"
+                      expandedExpr="isExpanded"
+                      [selectByClick]="true"
+                      (onContentReady)="$event.component.selectItem(treeBoxValue)"
+                      (onItemSelectionChanged)="treeView_itemSelectionChanged($event)">
+        </dx-tree-view>
+    </div>
+    <dx-validator #treeViewDropDownValidation></dx-validator>
+</dx-drop-down-box>

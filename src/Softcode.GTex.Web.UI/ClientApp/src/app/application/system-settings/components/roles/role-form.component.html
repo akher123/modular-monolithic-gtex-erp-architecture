@@ -1,0 +1,208 @@
+<div class="tab-detail-page-titlebar">
+    <app-titlebar (save)="onSaveClicked($event)" (close)="onCloseClicked()" (saveNew)="onSaveNNewClicked()" (saveClose)="onSaveNCloseClicked()"></app-titlebar>
+</div>
+<div [ngClass]="contentClass">
+    <!--<div> <pre>{{ this.rightDataSource  | json}}</pre></div>-->
+
+
+    <div class="row">
+        <div class="col-sm-12 col-xl-8 col-lg-12 div-two-column-left">
+
+            <form #userForm="ngForm">
+                <dx-validation-group #formValidation>
+
+                    <div class="card mb-1">
+                        <div class="card-header" data-toggle="collapse" href="#collapseOne">
+                            <a class="card-title">
+                                Role Information
+                            </a>
+                        </div>
+                        <div id="collapseOne" class="card-body show">
+                            <div class="row">
+                                <div class="col-sm-12 col-xl-10 col-lg-10 float-right">
+                                    <div class="row form-group ">
+                                        <div class="col-xl-3 card-body-caption">
+                                            <label>Business Profile</label>
+                                        </div>
+                                        <div class="col-xl-9">
+                                            <dx-select-box [disabled]="disabledBusinessProfile" [items]="businessProfileSelectItems"
+                                                           [(value)]="role.businessProfileId" displayExpr="name" valueExpr="id"
+                                                           [showClearButton]="true" (onValueChanged)="onBusinessProfileValueChanged($event)">
+                                                <dx-validator #businessProfileValidation></dx-validator>
+                                            </dx-select-box>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group ">
+                                        <div class="col-xl-3 card-body-caption">
+                                            <label>Parent Role </label>
+                                        </div>
+                                        <div class="col-xl-9">
+                                            <app-tree-view-drop-down-box [disabled]="disabledInUpdateMode" #parentRoleDropDown [selectedValue]="role.parentRoleId"
+                                                                         labelFor="Parent Role" [isRequired]="true" (onClearButtonClick)="onParentRoleClearButtonClick()"
+                                                                         (onSelectedValueChange)="onParentRoleSelectedValueChange($event)"></app-tree-view-drop-down-box>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="row form-group ">
+                                        <div class="col-xl-3 card-body-caption">
+                                            <label>Name</label>
+                                        </div>
+                                        <div class="col-xl-9">
+                                            <dx-text-box [(value)]="role.name" [valueChangeEvent]="'keyup'">
+                                                <dx-validator #roleNameValidation></dx-validator>
+                                            </dx-text-box>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group" *ngIf='roleId == ""'>
+                                        <div class="col-xl-3 card-body-caption">
+                                            <label>Copy Existing Role</label>
+                                        </div>
+                                        <div class="col-xl-9">
+                                            <!--<dx-select-box [items]="roleSelectItems" [(value)]="role.copyRoleId" displayExpr="name" valueExpr="id" [showClearButton]="true">
+                                            </dx-select-box>-->
+                                            <app-tree-view-drop-down-box #copyExistingRoleDropDown [selectedValue]="role.copyRoleId"
+                                                                         labelFor="Copy Existing Role" [isRequired]="false"
+                                                                         (onSelectedValueChange)="onCopyRoleSelectedValueChange($event)"></app-tree-view-drop-down-box>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="row form-group ">
+                                        <div class="col-xl-3 card-body-caption">
+                                            <label>Description</label>
+                                        </div>
+                                        <div class="col-xl-9">
+                                            <dx-text-box [(value)]="role.description" [valueChangeEvent]="'keyup'">
+                                            </dx-text-box>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group " *ngIf='roleId != ""'>
+                                        <div class="col-xl-3 card-body-caption-checkbox">
+                                            <label></label>
+                                        </div>
+                                        <div class="col-xl-9 card-body-control-checkbox">
+                                            <dx-check-box [(value)]="role.isActive" text="Active"></dx-check-box>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </dx-validation-group>
+            </form>
+            <div class="card mb-1">
+              <!--*ngIf='!isNewRole'-->
+              <div class="card-header" data-toggle="collapse" href="#collapseOne">
+                <a class="card-title">
+                  Role Information
+                </a>
+              </div>
+              <div id="collapseOne" class="card-body show">
+                <div class="row">
+                  <div class="col-sm-12 col-xl-10 col-lg-10 float-right">
+                    <!--[dataStructure]="plain"-->
+
+                    <dx-tree-list #rightTreeList
+                                  id="rightDataSource"
+                                  [dataSource]="rightDataSource"
+                                  keyExpr="id"
+                                  itemsExpr="items"
+                                  parentIdExpr="parentId"
+                                  dataStructure="tree"
+                                  [showRowLines]="true"
+                                  [showBorders]="true"
+                                  [columnAutoWidth]="true"
+                                  [autoExpandAll]="false"
+                                  [(selectedRowKeys)]="role.roleRights"
+                                  (onInitialized)="onRoleTreelistInitialized($event)">
+
+
+                      <dxo-selection mode="multiple" [recursive]="true"> </dxo-selection>
+                      <!--<dxo-search-panel [visible]="true"></dxo-search-panel>
+          <dxo-header-filter [visible]="true"></dxo-header-filter>
+          <dxo-filter-row [visible]="true"></dxo-filter-row>
+          -->
+
+                      <dxi-column dataField="name" [allowSorting]="false" caption="Role"></dxi-column>
+                      <!--<dxo-state-storing [enabled]="true" type="localStorage" storageKey="rightDataSourceStorage"></dxo-state-storing>-->
+                    </dx-tree-list>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div [ngClass]="userDivClass">
+            <div class="card mb-1">
+                <div class="card-header" data-toggle="collapse" href="#collapseTwo">
+                    <a class="card-title">
+                        Users
+                    </a>
+                </div>
+
+                <div id="collapseTwo" class="card-body show">
+                    <div class="row">
+                        <div class="col-sm-12 col-xl-12 col-lg-12">
+                            <div class="row form-group ">
+                                <div class="col-xl-11 col-lg-11 col-sm-11">
+
+                                    <app-entity-select-box #userEntitySelectionBox [isRequired]="false" [allowMultiSelection]="true">
+                                    </app-entity-select-box>
+
+                                </div>
+                                <div class="col-xl-1 col-lg-1 col-sm-1 field-add-icon">
+                                    <a class="edit-link" href="javascript:void(0);" (click)="assignRoleToUsers()">
+                                        <i class="fa fa-plus fa-lg"></i>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <dx-data-grid #grdUser
+                                      id="grdUser"
+                                      width="100%"
+                                      [dataSource]="userDataSource"
+                                      [allowColumnReordering]="true"
+                                      [allowColumnResizing]="true"
+                                      [columnAutoWidth]="true"
+                                      [showColumnLines]="false"
+                                      [showRowLines]="true"
+                                      [showBorders]="true"
+                                      [rowAlternationEnabled]="true"
+                                      keyExpr="id"
+                                      [loadPanel]="true"
+                                      [remoteOperations]="true"
+                                      [(selectedRowKeys)]="selectedRows">
+                            <dxo-column-chooser [enabled]="false"></dxo-column-chooser>
+                            <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
+                            <dxo-filter-row [visible]="true"></dxo-filter-row>
+                            <dxo-header-filter [visible]="false"></dxo-header-filter>
+                            <dxo-search-panel [visible]="true" [width]="240"></dxo-search-panel>
+                            <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
+                            <dxo-selection mode="single"></dxo-selection>
+                            <dxi-column dataField="username" cellTemplate="nameEditTemplate"></dxi-column>
+                            <dxi-column dataField="displayName"></dxi-column>
+                            <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50, 100]" [showInfo]="true" [showNavigationButtons]="true"></dxo-pager>
+                            <dxo-paging [pageSize]="50"></dxo-paging>
+                            <div *dxTemplate="let data of 'nameEditTemplate'">                                 
+                                  <!--<a href="javascript:void(0)">{{data.value}}</a>-->
+                                <a class="edit-link" href="javascript:void(0)" (click)="removeUserFromRole(data)">
+                                    <i class="fa fa-fw fa-trash"></i>
+                                </a> {{data.value}}
+                                <!--<a href="{{this.userDetailPageUrl + data.key.id }}" target="_blank">{{data.value}}</a>-->
+                            </div>
+                        </dx-data-grid>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-8 col-lg-12 div-two-column-left" *ngIf='roleId != ""'>
+
+        </div>
+    </div>
+
+</div>

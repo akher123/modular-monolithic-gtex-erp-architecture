@@ -1,0 +1,538 @@
+<nav id="sidebar" class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
+    <div class="list-group">
+        <!--<a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
+          <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Dashboard' | translate }}
+        </a>-->
+        <div class="nested-menu" *ngFor="let menu of applicationMenu;">
+          <a id="{{menu.name}}" name="{{menu.name}}" (click)="addExpandClass(menu.name)"
+             class="list-group-item {{(menu.name == defaultMenu)?'menu-selected':''}}">
+            <!--<i class="fa ">  <img src="{{menu.imageSource}}" /> </i>-->
+            <!--fa-{{menu.imageSource}}-->
+            <!--<i class="fa"> <img src="{{menu.imageSource}}" /> {{menu.caption}}</i>-->
+
+            <span><i class="{{menu.imageSource}}"> </i>  {{menu.caption}}</span>
+
+          </a>
+
+
+
+
+            <li class="nested" [class.expand]="selectedMenu === menu.name">
+                <ul class="submenu">
+                    <li *ngFor="let submenu of menu.inverseParent;">
+                        <a [routerLink]=[submenu.navigateUrl] [routerLinkActive]="['router-link-active']">
+                          <div class="linkmenu">
+                            <!--<i class="fa">-->
+                            <!--<img src="{{submenu.imageSource}}" />-->
+                            
+                            <span><i class="{{submenu.imageSource}}"></i>  {{submenu.caption}}</span>
+
+                          </div>
+                        </a>
+                        <!--<div class="separator"></div>-->
+                    </li>
+                </ul>
+            </li>
+        </div>
+
+
+        <!--<div class="nested-menu">
+            <a id="crm-header" class="list-group-item" name="crm-menu-header" (click)="addExpandClass('crm', 'crm-header')">
+                <i class="fa ">  <img src="../../../../assets/icons/crm_crm_16.png" /> </i>
+                <span class="span-style">menu.caption</span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'crm'">
+                <ul class="submenu">
+                    <li>
+                        <a [routerLink]="['/crm/companies']" [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+                                    <img src="../../../../assets/icons/crm_company_16.png" />
+                                </i><span class="span-style">Companies</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/crm/new-company']" [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+                                    <img src="../../../../assets/icons/crm_company_16.png" />
+                                </i><span class="span-style">New Company</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+
+
+                    <li>
+                        <a href="javascript:void(0)">
+                            <div class="linkmenu">
+                                <i class="fa">
+                                    <img src="../../../../assets/icons/crm_customer_16.png" />
+                                </i><span class="span-style">Customers</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <div class="linkmenu">
+                                <i class="fa">
+                                    <img src="../../../../assets/icons/crm_customer_16.png" />
+                                </i><span class="span-style">New Customer</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/crm_vendor_16.png" />
+                                </i><span class="span-style">Vendors</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/crm_vendor_16.png" />
+                                </i><span class="span-style">New Vendor</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/crm_contact_16.png" />
+                                </i><span class="span-style">Contacts</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/crm_contact_16.png" />
+                                </i><span class="span-style">New Contact</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                </ul>
+            </li>
+
+        </div>
+        <div class="nested-menu">
+            <a id="hrm-header" class="list-group-item" (click)="addExpandClass('hrm', 'hrm-header')">
+                <i class="fa">
+                    <img src="../../../../assets/icons/hrm_hrm_16.png" />
+                </i><span class="span-style"> HRM</span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'hrm'">
+                <ul class="submenu">
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/hrm_employee_16.png" />
+                                </i><span class="span-style">Employees</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+                                    <img src="../../../../assets/icons/hrm_employee_16.png" />
+                                </i><span class="span-style">New Employee</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                </ul>
+            </li>
+        </div>
+        <div class="nested-menu">
+            <a id="communication-header" class="list-group-item" (click)="addExpandClass('communication', 'communication-header')">
+                <i class="fa">
+                    <img src="../../../../assets/icons/com_communication_16.png" />
+                </i> <span class="span-style"> Communication</span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'communication'">
+                <ul class="submenu">
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/com_communication_16.png" />
+                                </i><span class="span-style">New Communication</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/com_communication_16.png" />
+                                </i><span class="span-style">Communications</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+                                    <img src="../../../../assets/icons/mail_edit_16.png" />
+                                </i><span class="span-style">Compose Email</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/mass_email_16.png" />
+                                </i><span class="span-style">Mass Emails</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+                                    <img src="../../../../assets/icons/mass_email_log_16.png" />
+                                </i><span class="span-style">Email Log</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/sms_16.png" />
+                                </i><span class="span-style">Compose SMS</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/sms_16.png" />
+                                </i><span class="span-style">Mass SMS</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/sms_sent_16.png" />
+                                </i><span class="span-style">SMS Log (Outgoing)</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+
+                </ul>
+            </li>
+        </div>
+        <div class="nested-menu">
+            <a id="task-header" class="list-group-item" (click)="addExpandClass('task', 'task-header')">
+                <i class="fa">
+                    <img src="../../../../assets/icons/task_tasks_16.png" />
+                </i> <span class="span-style"> Task</span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'task'">
+                <ul class="submenu">
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/task_tasks_16.png" />
+                                </i><span class="span-style">Compose Task</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/task_tasks_16.png" />
+                                </i><span class="span-style">Tasks</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/autotask_16.png" />
+                                </i><span class="span-style">Auto Task Templates</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                </ul>
+            </li>
+        </div>
+        <div class="nested-menu">
+            <a id="document-header" class="list-group-item" (click)="addExpandClass('document', 'document-header')">
+                <i class="fa">
+                    <img src="../../../../assets/icons/documents_documents_16.png" />
+                </i> <span class="span-style"> Document</span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'document'">
+                <ul class="submenu">
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/documents_uploaddocument_16.png" />
+                                </i><span class="span-style">Upload Document</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/documents_documents_16.png" />
+                                </i><span class="span-style">Documents</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/documents_compliance_16.png" />
+                                </i><span class="span-style">New Compliance</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/documents_compliance_16.png" />
+                                </i><span class="span-style">Compliances</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+
+                </ul>
+            </li>
+        </div>
+        <div class="nested-menu">
+            <a id="tools-header" class="list-group-item" (click)="addExpandClass('tools', 'tools-header')">
+                <i class="fa">
+                    <img src="../../../../assets/icons/tools_tools_16.png" />
+                </i> <span class="span-style"> Tools</span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'tools'">
+                <ul class="submenu">
+
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/tools_customform_16.png" />
+                                </i><span class="span-style">Custom Forms</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/tools_emailtemplate_16.png" />
+                                </i><span class="span-style">Email Templates</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/tools_emailtemplate_16.png" />
+                                </i><span class="span-style">SMS Templates</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/tools_customform_16.png" />
+                                </i><span class="span-style">Dashboard Templates</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+
+                </ul>
+            </li>
+        </div>
+        <div class="nested-menu">
+            <a id="settings-header" class="list-group-item" (click)="addExpandClass('settings', 'settings-header')">
+                <i class="fa">
+                    <img src="../../../../assets/icons/system_settings_16.png" />
+                </i> <span class="span-style"> System Settings</span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'settings'">
+                <ul class="submenu">
+
+                    <li>
+                        <a [routerLink]="['/system-settings/business-profiles']" [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/system_businessprofile_16.png" />
+                                </i><span class="span-style">Business Profiles</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/system-settings/user-form']" [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/system_user_16.png" />
+                                </i><span class="span-style">Users</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/system_roles_16.png" />
+                                </i><span class="span-style">Roles</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/system-settings/type-and-category-menu']" [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/system_customcategory_16.png" />
+                                </i><span class="span-style">Types & Categories</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/system-settings/configurations-menu']" [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+                                    <img src="../../../../assets/icons/system_configuration_16.png" />
+                                </i><span class="span-style">Configurations</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+
+                                    <img src="../../../../assets/icons/system_audit_16.png" />
+                                </i><span class="span-style">Audits</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+                    <li>
+                        <a [routerLinkActive]="['router-link-active']">
+                            <div class="linkmenu">
+                                <i class="fa">
+            
+                                    <img src="../../../../assets/icons/system_region_16.png" />
+                                </i><span class="span-style">Region</span>
+                            </div>
+                        </a>
+                        <div class="separator"></div>
+                    </li>
+
+                </ul>
+            </li>
+        </div>-->
+
+        <div class="header-fields">
+            <div class="nested-menu">
+                <a class="list-group-item" id="user-profile" (click)="addExpandClass('user-profile')">
+                    <span><i class="fa fa-user"></i>{{userName}}</span>
+                </a>
+                <li class="nested" [class.expand]="selectedMenu === 'user-profile'">
+                    <ul class="submenu">
+                        <li>
+                            <a href="javascript:void(0)">
+                                <span><i class="fa fa-fw fa-user"></i> {{ 'Profile' | translate }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/login']" (click)="onLoggedout()">
+                                <span><i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' | translate }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+        </div>
+
+    </div>
+</nav>

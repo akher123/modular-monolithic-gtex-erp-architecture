@@ -1,0 +1,169 @@
+<div class="tab-detail-page-titlebar">
+  <app-titlebar style="position:unset!important;" (save)="onSaveClicked($event)" (close)="onCloseClicked()" (saveNew)="onSaveNNewClicked()" (saveClose)="onSaveNCloseClicked()"></app-titlebar>
+</div>
+  <div [ngClass]="contentClass">
+    <form id="itmForm" name="itmForm" #itmForm="ngForm">
+      <dx-validation-group #formValidation>
+        <div class="row">
+          <div class="col-sm-12 col-xl-7 col-lg-12 div-two-column-left">
+
+            <div class="card mb-1">
+              <div class="card-header" data-toggle="collapse" href="#collapseOne">
+                <a class="card-title">
+                  General Information
+                </a>
+              </div>
+              <div id="collapseOne" class="card-body show">
+                <div class="row">
+                  <div class="col-lg-3 col-xl-3 col-sm-12">
+                    <div class="col-xl-12">
+                      <app-image-upload #imgUploadControl></app-image-upload>
+                    </div>
+                  </div>
+                  <div class="col-lg-9 col-xl-9 col-sm-12">
+                    <div class="row form-group ">
+                      <div class="col-xl-3 card-body-caption">
+                        <label>CompId</label>
+                      </div>
+                      <div class="col-xl-9">
+                        <dx-text-box [(ngModel)]="businessProfileDataSource.compId" name="businessProfileDataSource.compId" [readOnly]="true">
+
+                        </dx-text-box>
+                      </div>
+                    </div>
+                    <div class="row form-group required">
+                      <div class="col-xl-3 card-body-caption">
+                        <label required>Name</label>
+                      </div>
+                      <div class="col-xl-9">
+                        <dx-text-box [(ngModel)]="businessProfileDataSource.companyName" name="businessProfileDataSource.companyName" [valueChangeEvent]="'keyup'">
+                          <dx-validator #companyNameValidation></dx-validator>
+                        </dx-text-box>
+                      </div>
+                    </div>
+                    <div class="row form-group ">
+                      <div class="col-xl-3 card-body-caption">
+                        <label>Domain</label>
+                      </div>
+                      <div class="col-xl-9">
+                        <dx-text-box [(ngModel)]="businessProfileDataSource.domainName" name="businessProfileDataSource.domainName" [valueChangeEvent]="'keyup'">
+                          <dx-validator #domainNameValidation></dx-validator>
+                        </dx-text-box>
+                      </div>
+                    </div>
+                    <div class="row form-group ">
+                      <div class="col-xl-3 card-body-caption">
+                        <label>Number</label>
+                      </div>
+                      <div class="col-xl-9">
+                        <dx-text-box [(ngModel)]="businessProfileDataSource.number" name="businessProfileDataSource.number" [valueChangeEvent]="'keyup'">
+                        </dx-text-box>
+                      </div>
+                    </div>
+                    <div class="row form-group ">
+                      <div class="col-xl-3 card-body-caption">
+                        <label>ABN</label>
+                      </div>
+                      <div class="col-xl-9">
+                        <dx-text-box [(ngModel)]="businessProfileDataSource.abn" name="businessProfileDataSource.abn" [valueChangeEvent]="'keyup'">
+                        </dx-text-box>
+                      </div>
+                    </div>
+                    <div class="row form-group">
+                      <div class="col-xl-3 card-body-caption">
+                        <label>ACN</label>
+                      </div>
+                      <div class="col-xl-9">
+                        <dx-text-box [(ngModel)]="businessProfileDataSource.acn" name="businessProfileDataSource.acn" [valueChangeEvent]="'keyup'">
+                        </dx-text-box>
+                      </div>
+                    </div>
+
+                    <div *ngIf="businessProfileDataSource.isActive && isDefaultBusinessProfileUser" class="row form-group">
+                      <div class="col-xl-3 card-body-caption-checkbox">
+                        <label></label>
+                      </div>
+                      <div class="col-xl-9 card-body-control-checkbox">
+                        <dx-check-box [disabled]="disabledDefaultCheckbox" [(ngModel)]="businessProfileDataSource.isDefault" name="businessProfileDataSource.isDefault" text=" Default"></dx-check-box>
+                      </div>
+                    </div>
+
+                    <div *ngIf="businessProfileId>0 && !businessProfileDataSource.isDefault" class="row form-group">
+                      <div class="col-xl-3 card-body-caption-checkbox">
+                        <label></label>
+                      </div>
+                      <div class="col-xl-9 card-body-control-checkbox">
+                        <dx-check-box [(ngModel)]="businessProfileDataSource.isActive" name="businessProfileDataSource.isActive" text=" Active"></dx-check-box>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-xl-5 col-lg-12 div-two-column-right">
+            <div class="card mb-1">
+              <div class="card-header" data-toggle="collapse" href="#collapseTwo">
+                <a class="card-title">
+                  Office Contact Detail
+                </a>
+              </div>
+              <div id="collapseTwo" class="card-body show">
+                <div class="row form-group ">
+                  <div class="col-xl-3 card-body-caption">
+                    <label>Phone</label>
+                  </div>
+                  <div class="col-xl-9">
+                    <dx-text-box [(ngModel)]="businessProfileDataSource.phone" name="businessProfileDataSource.phone" [valueChangeEvent]="'keyup'">
+                    </dx-text-box>
+                  </div>
+                </div>
+                <div class="row form-group ">
+                  <div class="col-xl-3 card-body-caption">
+                    <label>Mobile</label>
+                  </div>
+                  <div class="col-xl-9">
+                    <dx-text-box [(ngModel)]="businessProfileDataSource.mobile" name="businessProfileDataSource.mobile" [valueChangeEvent]="'keyup'">
+                    </dx-text-box>
+                  </div>
+                </div>
+                <div class="row form-group ">
+                  <div class="col-xl-3 card-body-caption">
+                    <label>Fax</label>
+                  </div>
+                  <div class="col-xl-9">
+                    <dx-text-box [(ngModel)]="businessProfileDataSource.fax" name="businessProfileDataSource.fax" [valueChangeEvent]="'keyup'">
+                    </dx-text-box>
+                  </div>
+                </div>
+                <div class="row form-group ">
+                  <div class="col-xl-3 card-body-caption">
+                    <label>Email</label>
+                  </div>
+                  <div class="col-xl-9">
+                    <dx-text-box [(ngModel)]="businessProfileDataSource.email" name="businessProfileDataSource.email" [valueChangeEvent]="'keyup'">
+                      <dx-validator #emailValidation></dx-validator>
+                    </dx-text-box>
+                  </div>
+                </div>
+                <div class="row form-group ">
+                  <div class="col-xl-3 card-body-caption">
+                    <label>Website</label>
+                  </div>
+                  <div class="col-xl-9">
+                    <dx-text-box [(ngModel)]="businessProfileDataSource.website" name="businessProfileDataSource.website" [valueChangeEvent]="'keyup'">
+                    </dx-text-box>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </dx-validation-group>
+    </form>
+  </div>
+

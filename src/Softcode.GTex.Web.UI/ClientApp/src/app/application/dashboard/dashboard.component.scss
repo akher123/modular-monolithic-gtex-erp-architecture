@@ -1,0 +1,27 @@
+﻿.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85vh;
+    margin: 0 30px;
+    background: #034C7E;
+    color: #fff;
+    border-radius: 2px;
+}
+.wrapper {
+    text-align: center;
+}
+.wrapper h2 img {
+    padding: 5px;
+    background: #fff;
+    border-radius: 2px;
+}
+.wrapper h4 {
+    width: 355px;
+    margin: 35px auto;
+    padding: 15px 0px;
+    background: #035891;
+}
+.wrapper p {
+    text-align: center;
+}

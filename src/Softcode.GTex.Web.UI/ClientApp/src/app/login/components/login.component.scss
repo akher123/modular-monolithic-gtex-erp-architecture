@@ -1,0 +1,251 @@
+$font-family: 'Open Sans', sans-serif;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+  font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family;
+  color: #1F68C7;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
+p {
+  color: #444444;
+  letter-spacing: 1px;
+  line-height: 1.5em;
+}
+
+a {
+  color: #00aeef;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/*
+ALL COMMON STYLE START HERE
+*/
+
+/* NAV BAR SECTION 
+-------------------------------------------------- */
+.navbar {
+  border-bottom: 1px solid #cccccc;
+}
+
+.navbar-brand {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #727272;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #00b1f0;
+}
+
+.navbar-nav a.waves-light {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  padding: 0;
+  font-size: 13px;
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 2px;
+}
+
+.dropdown-item {
+  padding: .36rem 1rem;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+  color: #ffffff;
+  background-color: #00b1f0;
+}
+
+/* SLIDER SECTION
+-------------------------------------------------- */
+.carousel-caption {
+  z-index: 10;
+  bottom: 15rem;
+}
+
+.carousel-caption h1 {
+  color: #ffffff;
+  font-weight: 100;
+  line-height: 2em;
+}
+
+.carousel-caption p {
+  color: #eeeeee;
+  font-family: $font-family;
+  font-weight: 300;
+}
+
+.carousel-item {
+  height: 92vh;
+  background-color: #f9f9f9;
+}
+
+.carousel-item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 100%;
+}
+
+.carousel-control-prev:hover, .carousel-control-next:hover {
+  background: url('../../../assets/images/banner/shadow.png');
+  background-size: contain;
+
+}
+
+.carousel-item .carousel-btn {
+  padding: .375rem .75rem;
+  font-size: 15px;
+  border-radius: 2px;
+}
+
+@media (min-width: 40em) {
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+}
+
+/* FEATURES SECTION
+-------------------------------------------------- */
+.box {
+  padding: 5% 0;
+}
+
+.line {
+  border-left: 1px solid lightgray;
+}
+
+.box3 {
+  margin: 0 auto;
+  padding: 5% 10%;
+}
+
+.box3 h1 {
+  font-weight: normal;
+  font-size: 16pt;
+  margin: 0 auto;
+  color: #5385c1;
+}
+
+.box3 p {
+  color: #888888;
+  font-size: 11pt;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+.More {
+  background: #5385c1;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 6px 20px;
+  border-radius: 1px;
+}
+
+.More:hover {
+  background: #00b1f0;
+  color: #ffffff;
+}
+
+/* ABOUT SECTION
+-------------------------------------------------- */
+.about-sec {
+
+  background: url('../../../assets/images/home-contact-bg.jpg') no-repeat 50% 100%;
+  background-size: cover;
+  position: relative;
+  padding: 80px 0;
+}
+
+.about-sec:before {
+  content: ' ';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(22,122,192,0.4);
+  top: 0;
+  left: 0
+}
+
+.about-sec h2 {
+  color: #ffffff;
+  font-size: 55px;
+  font-weight: 100;
+}
+
+.about-sec h2 small {
+  display: block;
+  font-size: 24px;
+  margin-bottom: 15px;
+  padding-left: 10px;
+}
+
+.about-sec p {
+  color: #ffffff;
+}
+
+/* FOOTER SECTION
+-------------------------------------------------- */
+.last {
+  text-align: center;
+  background: #ffffff;
+  margin: 0 auto;
+  padding: 20px;
+  display: block;
+}
+
+.last p {
+  color: #aaaaaa;
+  font-size: 10pt;
+  font-weight: normal;
+  margin: 0 auto;
+}
+
+.last .combo {
+  display: inline-block;
+  padding: 2%;
+  width: 38%;
+  min-width: 200px;
+}
+
+.ralign {
+  text-align: right;
+}
+
+.lalign {
+  text-align: left;
+}
+
+.calign {
+  text-align: center;
+}
+
+.social a {
+  text-decoration: none;
+  padding: 5px;
+  color: #5385c1;
+  font-size: 14pt;
+}

@@ -1,0 +1,37 @@
+<nav id="topbar" class="navbar navbar-expand-lg fixed-top">
+  <a class="navbar-brand" href="">
+    <img src="../../../../../assets/logo/softcode-logo.png" width="34" alt="Logo" />
+    <span style="margin-left: 5px;vertical-align: middle">Soft Code</span>
+  </a>
+  <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+    <i class="fa fa-bars text-muted" aria-hidden="true"></i>
+  </button>
+  <!-- Toggle Side Bar -->
+  <div class="topnav-toggle d-none d-lg-block" onclick="sideBarToggle()">
+    <i id="al" class="fa fa-toggle-off" style="display:none" aria-hidden="true"></i>
+    <i id="ar" class="fa fa-toggle-on" aria-hidden="true"></i>
+  </div>
+
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown" *ngIf="isAuthorized" ngbDropdown>
+        <a id="user-settings-drop-down" href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
+          <i class="fa fa-user"></i> {{userName}} <b class="caret"></b>
+        </a>
+        <div class="dropdown-menu-right" ngbDropdownMenu>
+          <a class="dropdown-item" href="javascript:void(0)">
+            <i class="fa fa-fw fa-user"></i> {{ 'Profile' | translate }}
+          </a>
+          <a class="dropdown-item" href="javascript:void(0)" (click)="changePassword()">
+            <i class="fa fa-fw fa-key"></i> {{ 'Change Password' | translate }}
+          </a>
+          <a id="log-out" class="dropdown-item" href="javascript:void(0)" (click)="logout()">
+            <i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' | translate }}
+          </a>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+

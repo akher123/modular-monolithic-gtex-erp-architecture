@@ -1,0 +1,141 @@
+<div class="tab-detail-page-titlebar">
+  <app-titlebar [HideSaveAndNew]="true" [HideSaveAndClose]="true" (save)="onSaveClicked($event)" (close)="onCloseClicked($event)"></app-titlebar>
+</div>
+<div [ngClass]="contentClass">
+
+  <div class="row">
+    <div class="col-sm-12 col-xl-6">
+      <div class="card mb-1">
+        <div class="card-header" data-toggle="collapse" href="#collapseThree">
+          <a class="card-title">
+            Menu Tree
+          </a>
+        </div>
+        <div id="collapseThree" class="card-body show">
+
+          <div class="row">
+            <div class="col-sm-12 col-xl-6">
+              <dx-tree-view #treeview
+                            id="applicationMenuDataSource"
+                            [items]="applicationMenuDataSource"
+                            keyExpr="id"
+                            displayExpr="caption"
+                            itemsExpr="inverseParent"
+                            parentIdExpr="parentId"
+                            dataStructure="tree"
+                            [width]="500"
+                            [height]="400"
+                            [searchEnabled]="true"
+                            searchMode="contains"
+                            (onItemClick)="selectItem($event)">
+              </dx-tree-view>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-sm-12 col-xl-6">
+      <form #applicationMenuForm="ngForm">
+        <dx-validation-group #formValidation>
+          <div class="row">
+
+            <div class="col-sm-12 col-xl-12 col-lg-12">
+              <div class="card mb-1">
+                <div class="card-header" data-toggle="collapse" href="#collapseOne">
+                  Application Menu
+                </div>
+                <div id="collapseOne" class="card-body show">
+                  <div class="row form-group ">
+                    <div class="col-xl-3 card-body-caption">
+                      <label>Parent Menue </label>
+                    </div>
+                    <div class="col-xl-9">
+                      <app-tree-view-drop-down-box [disabled]="disabledInUpdateMode"
+                                                   #parentMenu [selectedValue]="formData.parentId"
+                                                   (onSelectedValueChange)="onParentMenuSelectedValueChange($event)" labelFor="Parent Menu" [isRequired]="false">
+                      </app-tree-view-drop-down-box>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-xl-3 card-body-caption">
+                      <label>Name</label>
+                    </div>
+                    <div class="col-xl-9">
+                      <dx-text-box [(value)]="formData.name" name="name" [valueChangeEvent]="'keyup'">
+                        <dx-validator #menuNameValidation></dx-validator>
+                      </dx-text-box>
+                    </div>
+                  </div>
+
+
+                  <div class="row form-group ">
+                    <div class="col-xl-3 card-body-caption">
+                      <label>Caption</label>
+                    </div>
+                    <div class="col-xl-9">
+                      <dx-text-box name="caption" [(value)]="formData.caption" [valueChangeEvent]="'keyup'">
+                        <dx-validator #captionValidation></dx-validator>
+                      </dx-text-box>
+                    </div>
+                  </div>
+
+
+                  <div class="row form-group ">
+                    <div class="col-xl-3 card-body-caption">
+                      <label>Navigation Url</label>
+                    </div>
+                    <div class="col-xl-9">
+                      <dx-text-box name="Navigate Url" [(value)]="formData.navigateUrl" [valueChangeEvent]="'keyup'">
+                      </dx-text-box>
+                    </div>
+                  </div>
+                  <div class="row form-group ">
+                    <div class="col-xl-3 card-body-caption">
+                      <label>Row No</label>
+                    </div>
+                    <div class="col-xl-9">
+                      <dx-text-box name="rowNo" [(value)]="formData.rowNo" [valueChangeEvent]="'keyup'">
+                      </dx-text-box>
+                    </div>
+                  </div>
+                  <div class="row form-group ">
+                    <div class="col-xl-3 card-body-caption">
+                      <label>Image Source</label>
+                    </div>
+                    <div class="col-xl-9">
+                      <dx-text-box name="ImageSource" [(value)]="formData.imageSource" [valueChangeEvent]="'keyup'">
+                      </dx-text-box>
+                    </div>
+                  </div>
+
+                  <div class="row form-group ">
+                    <div class="col-xl-3 card-body-caption">
+                      <label>Entity Right ID</label>
+                    </div>
+                    <div class="col-xl-9">
+                      <dx-text-box name="entityRightId" [(value)]="formData.entityRightId" [valueChangeEvent]="'keyup'">
+                      </dx-text-box>
+                    </div>
+                  </div>
+                  <div class="row form-group ">
+                    <div class="col-xl-3 card-body-caption">
+
+                    </div>
+                    <div class="col-xl-9">
+                      <dx-check-box [(value)]="formData.isVisible" text="Active"></dx-check-box>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </dx-validation-group>
+      </form>
+    </div>
+  </div>
+
+</div>

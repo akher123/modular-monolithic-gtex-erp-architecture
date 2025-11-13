@@ -1,0 +1,108 @@
+<!--<div style="border: 1px solid red">detail-group Component</div>
+
+<div *ngFor="let item of groupSchemaSource.fields; let i = index">
+    <dx-text-box name="item.dataField" [(value)]="entityDataSource[item.mappingField]" [valueChangeEvent]="'keyup'">
+        <dx-validator>
+            <dxi-validation-rule type="required" message="Account number is required" validationMessageMode='always'></dxi-validation-rule>
+        </dx-validator>
+    </dx-text-box>
+
+</div>-->
+
+
+
+<div class="card mb-1">
+    <div class="card-header" data-toggle="collapse"  [attr.href]="'#collapseOne'+groupSchemaSource.name">
+        <a class="card-title">
+            {{groupSchemaSource.caption}}
+        </a>
+    </div>
+    <div id="collapseOne{{groupSchemaSource.name}}" class="card-body show">
+        <div class="row">
+            <div class="col-lg-12 col-xl-12 col-sm-12">
+                <div class="row form-group " *ngFor="let item of groupSchemaSource.fields; let i = index">
+                    <div class="col-xl-3 card-body-caption">
+                        <label>{{item.caption}}</label>
+                    </div>
+                    <div class="col-xl-9" *ngIf="item.controlTypeId == 90101 && !item.required">
+                        <dx-text-box name="item.dataField" [(value)]="entityDataSource[item.mappingField]" [valueChangeEvent]="'keyup'">
+
+                        </dx-text-box>
+                    </div>
+                    <div class="col-xl-9" *ngIf="item.controlTypeId == 90101 && item.required">
+                        <dx-text-box name="item.dataField" [(value)]="entityDataSource[item.mappingField]" [valueChangeEvent]="'keyup'">
+                            <dx-validator>
+                                <dxi-validation-rule type="required" message="{{item.caption}} is required" validationMessageMode='always'></dxi-validation-rule>
+                            </dx-validator>
+                        </dx-text-box>
+                    </div>
+
+                    <div class="col-xl-9" *ngIf="item.controlTypeId == 90102 && !item.required">
+                        <dx-select-box [items]="componentDataSource[item.dataSourceName]" [(value)]="entityDataSource[item.mappingField]" displayExpr="name" valueExpr="id"
+                                       [showClearButton]="true">
+                        </dx-select-box>
+                    </div>
+
+                    <div class="col-xl-9" *ngIf="item.controlTypeId == 90102 && item.required">
+                        <dx-select-box [items]="componentDataSource[item.dataSourceName]" [(value)]="entityDataSource[item.mappingField]" displayExpr="name" valueExpr="id"
+                                       [showClearButton]="true">
+                            <dx-validator>
+                                <dxi-validation-rule type="required" message="{{item.caption}} is required" validationMessageMode='always'></dxi-validation-rule>
+                            </dx-validator>
+                        </dx-select-box>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!--<div class="row form-group ">
+    <div class="col-xl-3 card-body-caption">
+        <label>Number</label>
+    </div>
+    <div class="col-xl-9">
+        <dx-text-box [(value)]="businessProfileDataSource.number" [valueChangeEvent]="'keyup'">
+        </dx-text-box>
+    </div>
+</div>
+<div class="row form-group ">
+    <div class="col-xl-3 card-body-caption">
+        <label>ABN</label>
+    </div>
+    <div class="col-xl-9">
+        <dx-text-box [(value)]="businessProfileDataSource.abn" [valueChangeEvent]="'keyup'">
+        </dx-text-box>
+    </div>
+</div>
+<div class="row form-group">
+    <div class="col-xl-3 card-body-caption">
+        <label>ACN</label>
+    </div>
+    <div class="col-xl-9">
+        <dx-text-box [(value)]="businessProfileDataSource.acn" [valueChangeEvent]="'keyup'">
+        </dx-text-box>
+    </div>
+</div>
+
+<div *ngIf="businessProfileDataSource.isActive && isDefaultBusinessProfileUser" class="row form-group">
+    <div class="col-xl-3 card-body-caption-checkbox">
+        <label></label>
+    </div>
+    <div class="col-xl-9 card-body-control-checkbox">
+        <dx-check-box [disabled]="disabledDefaultCheckbox" [(value)]="businessProfileDataSource.isDefault" text=" Default"></dx-check-box>
+    </div>
+</div>
+
+<div *ngIf="businessProfileId>0 && !businessProfileDataSource.isDefault" class="row form-group">
+    <div class="col-xl-3 card-body-caption-checkbox">
+        <label></label>
+    </div>
+    <div class="col-xl-9 card-body-control-checkbox">
+        <dx-check-box [(value)]="businessProfileDataSource.isActive" text=" Active"></dx-check-box>
+    </div>
+</div>-->

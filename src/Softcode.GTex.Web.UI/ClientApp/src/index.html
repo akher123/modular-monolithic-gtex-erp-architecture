@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <title>Softcode.GTex.Web.UI</title>
+  <base href="/">
+
+  <style>
+    body {
+      background: #F5F5F5;
+    }
+  </style>
+
+</head>
+<body>
+  <app-root>
+    <div style="display: flex;align-items: center;justify-content: center;height: 98vh;font-weight: 500;">
+      <div><img src="assets/images/loading2.gif" width="400" /></div>
+      <div class="d-none d-md-block"><!--Loading...please wait.....--></div>
+    </div>
+  </app-root>
+
+
+  <!-- Left Side Bar Toggle Script -->
+  <script>
+    function sideBarToggle() {
+      var x = document.getElementById("sidebar");
+      x.classList.toggle("side-toggle");
+
+      var z = document.getElementById("main-wrapper");
+      z.classList.toggle("main-wrapper-left");
+
+      var title = document.getElementById("div-outer");
+      title.classList.toggle("title-toggle");
+
+      var sidebarLeftIcon = document.getElementById("al");
+      var sidebarRightIcon = document.getElementById("ar");
+
+      if (sidebarLeftIcon.style.display === "none") {
+        sidebarLeftIcon.style.display = "block";
+        sidebarLeftIcon.style.color = "#ccc";
+        sidebarRightIcon.style.display = "none";
+      } else {
+        sidebarLeftIcon.style.display = "none";
+        sidebarRightIcon.style.display = "block";
+      }
+
+    }
+
+  </script>
+
+</body>
+</html>

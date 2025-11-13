@@ -1,0 +1,79 @@
+
+@media only screen and (min-width: 1200px) {
+  #sidebar-toggle-wrapper {
+    display: flex;
+  }
+
+  .card-body-caption-checkbox, .card-body-caption {
+    justify-content: flex-end;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  #sidebar-toggle-wrapper {
+    display: flex;
+  }
+
+  .card-body-caption-checkbox, .card-body-caption {
+    justify-content: flex-end;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  #sidebar-toggle-wrapper {
+    display: none !important;
+  }
+
+  .dx-toolbar .dx-texteditor {
+    width: 110px !important;
+  }
+
+  .card-body-caption-checkbox, .card-body-caption {
+    justify-content: flex-start;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #sidebar-toggle-wrapper {
+    display: none !important;
+  }
+
+  .dx-toolbar .dx-texteditor {
+    width: 110px !important;
+  }
+
+  .card-body-caption-checkbox, .card-body-caption {
+    justify-content: flex-start;
+  }
+
+  .dx-toolbar {
+    .dx-toolbar-menu-container {
+      .dx-button {
+        background-color: #0768a8;
+        border-radius: 2px;
+
+        .dx-button-content {
+          padding: 7px;
+
+          .dx-icon {
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 992px) {
+  .push-right {
+    .sidebar {
+      top: 40px !important;
+      left: 200px !important;
+    }
+  }
+
+  #sidebar-toggle-wrapper {
+    display: none;
+  }
+}

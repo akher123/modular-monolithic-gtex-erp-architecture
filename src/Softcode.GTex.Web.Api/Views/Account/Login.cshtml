@@ -1,0 +1,83 @@
+@using Softcode.GTex.Api.Models;
+
+@model LoginViewModel
+@{
+    Layout = "_LandingLayout";
+}
+
+@{
+    ViewData["Title"] = Softcode.GTex.ItmConfigurations.LoginTitle;
+}
+
+<div class="login-page">
+    <section>
+        <div class="container vertical-center">
+            <div class="row justify-content-center">
+                <div class="col-sm-8 col-lg-5">
+                    <div class="u-shadow-v15 g-bg-white rounded g-py-40 g-px-30">
+                        <header class="text-center mb-4">
+                            @*<h2 class="h2 g-color-black g-font-weight-600">Login</h2>*@
+                            <img src="~/images/logo.png" width="70" />
+                        </header>
+                        <form asp-route="Login" class="g-py-15">
+                            <input type="hidden" asp-for="ReturnUrl" />
+                            <fieldset>
+                                <div class="mb-4">
+                                    <div class="input-group form-group g-brd-primary--focus">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text g-width-45 g-brd-right-none g-brd-gray-light-v4 g-color-gray-dark-v5"><i class="icon-finance-067 u-line-icon-pro"></i></span>
+                                        </div>
+                                        <input class="form-control g-color-black g-bg-white g-brd-gray-light-v4 g-py-10 g-px-15" placeholder="Username" asp-for="Username" data-val-required="Username is required." autofocus>
+                                    </div>
+                                </div>
+                                <div class="g-mb-35">
+                                    <div class="input-group form-group g-brd-primary--focus mb-4">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text g-width-45 g-brd-right-none g-brd-gray-light-v4 g-color-gray-dark-v5"><i class="icon-media-094 u-line-icon-pro"></i></span>
+                                        </div>
+                                        <input class="form-control g-color-black g-bg-white g-brd-gray-light-v4 g-py-10 g-px-15" type="password" placeholder="Password" data-val-required="Password is required." asp-for="Password" autocomplete="off">
+                                    </div>
+                                </div>
+                                @if (Model.EnableCaptcha)
+                                {
+                                    <div class="g-mb-35">
+                                        <div class="input-group form-group g-brd-primary--focus mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text g-width-45 g-brd-right-none g-brd-gray-light-v4 g-color-gray-dark-v5"><i class="icon-media-094 u-line-icon-pro"></i></span>
+                                            </div>
+                                            <input class="form-control g-color-black g-bg-white g-brd-gray-light-v4 g-py-10 g-px-15" type="password" placeholder="Password" data-val-required="Password is required." asp-for="Password" autocomplete="off">
+                                        </div>
+                                    </div>
+                                }
+                                <div class="row justify-content-between">
+                                    <div class="form-group login-remember col align-self-center col-xs-12">
+                                        @if (Model.AllowRememberLogin)
+                                        {
+                                            <label asp-for="RememberLogin" class="form-check-inline u-check g-color-gray-dark-v5 g-font-size-12 g-pl-25 mb-0">
+                                                <input class="g-pos-abs g-top-2 g-left-0" asp-for="RememberLogin">
+                                                Keep signed in
+                                            </label>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="g-mb-35">
+                                    <div class="col-xs-12">
+                                        @Html.Partial("_ValidationSummary")
+                                    </div>
+                                </div>
+                                <div class="mb-5 form-group">
+                                    <button id="btn-login" class="btn btn-md btn-block u-btn-blue g-py-13" name="button" value="login">Login</button>
+                                </div>
+                            </fieldset>
+                            <div class="row justify-content-between">
+                                <div class="form-group col align-self-center text-center col-xs-12">
+                                    <a class="g-font-size-12 g-top-2 g-color-blue" asp-action="ForgotPassword" asp-route-returnUrl="@Model.ReturnUrl">Forgot password?</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,97 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net471</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+
+    <!-- Set this to true if you enable server-side prerendering -->
+    <BuildServerSideRenderer>false</BuildServerSideRenderer>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\app\application\application-shared\models\**" />
+    <Compile Remove="ClientApp\src\app\application\hrm\models\**" />
+    <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\app\application\application-shared\models\**" />
+    <Content Remove="ClientApp\src\app\application\hrm\models\**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="ClientApp\src\app\application\application-shared\models\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\application\hrm\models\**" />
+    <None Remove="ClientApp\src\app\application\application-shared\models\**" />
+    <None Remove="ClientApp\src\app\application\hrm\models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\shared\services\toast.service.ts" />
+    <None Remove="ClientApp\src\app\shared\services\toast.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\application\accounting\components\" />
+    <Folder Include="ClientApp\src\app\application\accounting\models\" />
+    <Folder Include="ClientApp\src\app\application\accounting\services\" />
+    <Folder Include="ClientApp\src\app\application\commercial\components\" />
+    <Folder Include="ClientApp\src\app\application\commercial\models\" />
+    <Folder Include="ClientApp\src\app\application\commercial\services\" />
+    <Folder Include="ClientApp\src\app\application\hrm\components\" />
+    <Folder Include="ClientApp\src\app\application\Inventory\components\" />
+    <Folder Include="ClientApp\src\app\application\Inventory\models\" />
+    <Folder Include="ClientApp\src\app\application\Inventory\services\" />
+    <Folder Include="ClientApp\src\app\application\merchandising\components\" />
+    <Folder Include="ClientApp\src\app\application\merchandising\models\" />
+    <Folder Include="ClientApp\src\app\application\merchandising\services\" />
+    <Folder Include="ClientApp\src\app\application\planning\components\" />
+    <Folder Include="ClientApp\src\app\application\planning\models\" />
+    <Folder Include="ClientApp\src\app\application\planning\services\" />
+    <Folder Include="ClientApp\src\app\application\procurement\components\" />
+    <Folder Include="ClientApp\src\app\application\procurement\modules\" />
+    <Folder Include="ClientApp\src\app\application\procurement\services\" />
+    <Folder Include="ClientApp\src\app\application\production\components\" />
+    <Folder Include="ClientApp\src\app\application\production\models\" />
+    <Folder Include="ClientApp\src\app\application\production\services\" />
+  </ItemGroup>
+
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ssr -- --prod" Condition=" '$(BuildServerSideRenderer)' == 'true' " />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
+      <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+</Project>

@@ -1,0 +1,118 @@
+$topnav-background-color: #ffffff;
+$topnav-text-color: #0E4A81;
+$sidebar-bg-color: #035891;
+
+%transition-color {
+  -webkit-transition: color 1s ease-out;
+  -moz-transition: color 1s ease-out;
+  -o-transition: color 1s ease-out;
+  transition: color 1s ease-out;
+}
+
+:host {
+  .navbar {
+    padding: 0;
+    background-color: $topnav-background-color;
+    -webkit-box-shadow: 0 0 11px rgba(0,0,0,0.13);
+    box-shadow: 0 0 11px rgba(0,0,0,0.13);
+    /*border-bottom: 1px solid #eeeeee;*/
+    .navbar-brand {
+      /*background: $sidebar-bg-color;*/
+      color: $topnav-text-color;
+      margin-right: 0;
+      padding: 0.2rem 1rem;
+    }
+
+    .topnav-toggle {
+      display: inherit;
+      margin-left: 10px;
+      color: $topnav-text-color;
+      font-size: 23px;
+      /*height: 24px;*/
+      cursor: pointer;
+      line-height: 0;
+      @extend %transition-color;
+    }
+
+    .topnav-toggle:hover {
+      color: #1fc1cc;
+    }
+
+    .navbar-toggler {
+      color: $topnav-text-color;
+    }
+
+    .nav-item > a {
+      color: $topnav-text-color;
+      @extend %transition-color;
+
+      &:hover {
+        color: #1fc1cc;
+      }
+    }
+
+    .nav-item .dropdown-menu {
+      padding: 0;
+      color: #333333;
+      background-color: #ffffff;
+      border-color: #dddddd;
+      border-radius: 2px;
+
+      .dropdown-item {
+        padding: 0.5rem 1rem;
+        color: #64778d;
+        font-size: 14px;
+        @extend %transition-color;
+
+        &:hover, &:focus {
+          color: #09192a;
+          background-color: #f3f3f3;
+        }
+      }
+
+      .dropdown-divider {
+        margin: 0;
+        border-top-color: #eeeeee;
+      }
+    }
+  }
+
+  .fixed-top {
+    z-index: 1500;
+  }
+
+
+  .messages {
+    width: 300px;
+
+    .media {
+      border-bottom: 1px solid #eeeeee;
+      padding: 5px 10px;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    .media-body {
+      h5 {
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .small {
+        margin: 0;
+        color: #4b535a !important;
+      }
+
+      .last {
+        font-size: 12px;
+        margin: 0;
+      }
+    }
+  }
+
+  .topbar-toggle {
+    top: -60px;
+  }
+}

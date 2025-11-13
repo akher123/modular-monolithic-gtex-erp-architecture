@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2E1A59EE-0321-4C4A-9153-BA125CAC5419}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Softcode.GTex.Data</RootNamespace>
+    <AssemblyName>Softcode.GTex.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExtreme.AspNet.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=982f5dab1439d0f7, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExtreme.AspNet.Data.2.0.0\lib\net452\DevExtreme.AspNet.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Authentication, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Authentication.2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Authentication.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Authentication.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Authentication.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Authentication.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Authentication.Cookies, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Authentication.Cookies.2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Authentication.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Authentication.Core, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Authentication.Core.2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Authentication.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Cryptography.Internal, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Cryptography.Internal.2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Cryptography.Internal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Cryptography.KeyDerivation.2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.DataProtection, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.DataProtection.2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.DataProtection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.DataProtection.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.DataProtection.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.DataProtection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Hosting.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Hosting.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Hosting.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Hosting.Server.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Hosting.Server.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Extensions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Extensions.2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Features, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Features.2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Http.Features.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Identity, Version=2.1.3.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Identity.2.1.3\lib\netstandard2.0\Microsoft.AspNetCore.Identity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore, Version=2.1.3.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Identity.EntityFrameworkCore.2.1.3\lib\netstandard2.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.WebUtilities, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.WebUtilities.2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.WebUtilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore, Version=2.1.3.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.2.1.3\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Abstractions, Version=2.1.3.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Abstractions.2.1.3\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Relational, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Relational.2.1.1\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Relational.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Memory.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.2.1.1\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Hosting.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Hosting.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Hosting.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Identity.Core, Version=2.1.3.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Identity.Core.2.1.3\lib\netstandard2.0\Microsoft.Extensions.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Identity.Stores, Version=2.1.3.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Identity.Stores.2.1.3\lib\netstandard2.0\Microsoft.Extensions.Identity.Stores.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.ObjectPool, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.ObjectPool.2.1.1\lib\netstandard2.0\Microsoft.Extensions.ObjectPool.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.WebEncoders, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.WebEncoders.2.1.1\lib\netstandard2.0\Microsoft.Extensions.WebEncoders.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Net.Http.Headers, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.Headers.2.1.1\lib\netstandard2.0\Microsoft.Net.Http.Headers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Registry, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Registry.4.5.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Linq, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Remotion.Linq.2.2.0\lib\net45\Remotion.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Interactive.Async, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Interactive.Async.3.1.1\lib\net46\System.Interactive.Async.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.1\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.1\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.4.5.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Xml, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Xml.4.5.0\lib\net461\System.Security.Cryptography.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.4.5.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.4.5.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.5.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="ApplicationViewDbContext.cs" />
+    <Compile Include="BaseRepository.cs" />
+    <Compile Include="BaseViewRepository.cs" />
+    <Compile Include="FileStorage\FileStorageDbContext.cs" />
+    <Compile Include="FileStorage\FileStorageRepository.cs" />
+    <Compile Include="FileStorage\IFileStorageRepository.cs" />
+    <Compile Include="FileStorage\Models\FileStore.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="IStoredProcedureRepository.cs" />
+    <Compile Include="IViewRepository.cs" />
+    <Compile Include="Mappings\AccessLogMapping.cs" />
+    <Compile Include="Mappings\AddressMapping.cs" />
+    <Compile Include="Mappings\ApplicationMenuMapping.cs" />
+    <Compile Include="Mappings\ApplicationPageActionMapping.cs" />
+    <Compile Include="Mappings\ApplicationPageDetailFieldMapping.cs" />
+    <Compile Include="Mappings\ApplicationPageGroupMapping.cs" />
+    <Compile Include="Mappings\ApplicationPageListFieldMapping.cs" />
+    <Compile Include="Mappings\ApplicationPageMapping.cs" />
+    <Compile Include="Mappings\ApplicationPageNavigationMapping.cs" />
+    <Compile Include="Mappings\ApplicationPageServiceMapping.cs" />
+    <Compile Include="Mappings\ApplicationRoleRightMapping.cs" />
+    <Compile Include="Mappings\BusinessCategoryMapping.cs" />
+    <Compile Include="Mappings\BusinessCategoryMapTypeMapping.cs" />
+    <Compile Include="Mappings\BusinessCategoryTypeMapping.cs" />
+    <Compile Include="Mappings\BusinessProfileAddressMapping.cs" />
+    <Compile Include="Mappings\BusinessProfileDepartmentMapping.cs" />
+    <Compile Include="Mappings\BusinessProfileMapping.cs" />
+    <Compile Include="Mappings\BusinessProfileSiteMapping.cs" />
+    <Compile Include="Mappings\BusinessUnitMapping.cs" />
+    <Compile Include="Mappings\CommunicationFileStoreMapping.cs" />
+    <Compile Include="Mappings\CommunicationMapping.cs" />
+    <Compile Include="Mappings\CompanyDepartmentMapping.cs" />
+    <Compile Include="Mappings\CompanyMapping.cs" />
+    <Compile Include="Mappings\CompanyOperatingStateMapping.cs" />
+    <Compile Include="Mappings\CompanyRelationshipTypeMapping.cs" />
+    <Compile Include="Mappings\ContactAddressMapping.cs" />
+    <Compile Include="Mappings\ContactBusinessProfileMapping.cs" />
+    <Compile Include="Mappings\ContactMapping.cs" />
+    <Compile Include="Mappings\ContactOperatingCityMapping.cs" />
+    <Compile Include="Mappings\ContactSpecialisationMapping.cs" />
+    <Compile Include="Mappings\CostCentreMapping.cs" />
+    <Compile Include="Mappings\CountryMapping.cs" />
+    <Compile Include="Mappings\CurrencyMapping.cs" />
+    <Compile Include="Mappings\CustomCategoryMapping.cs" />
+    <Compile Include="Mappings\CustomCategoryMapTypeMapping.cs" />
+    <Compile Include="Mappings\CustomCategoryMapTypeOptionMapping.cs" />
+    <Compile Include="Mappings\CustomCategoryTypeMapping.cs" />
+    <Compile Include="Mappings\DepartmentMapping.cs" />
+    <Compile Include="Mappings\DocumentFileStoreMapping.cs" />
+    <Compile Include="Mappings\DocumentMetadataMapping.cs" />
+    <Compile Include="Mappings\EmailAttachmentMapping.cs" />
+    <Compile Include="Mappings\EmailJobQueueMapping.cs" />
+    <Compile Include="Mappings\EmailQueueMapping.cs" />
+    <Compile Include="Mappings\EmailRecipientBccMapping.cs" />
+    <Compile Include="Mappings\EmailRecipientCcMapping.cs" />
+    <Compile Include="Mappings\EmailRecipientMapping.cs" />
+    <Compile Include="Mappings\EmailRecipientToMapping.cs" />
+    <Compile Include="Mappings\EmailServerMapping.cs" />
+    <Compile Include="Mappings\EmailTemplateMapping.cs" />
+    <Compile Include="Mappings\EmployeeCostCentreMapping.cs" />
+    <Compile Include="Mappings\EmployeeMapping.cs" />
+    <Compile Include="Mappings\EmployeeSiteMapping.cs" />
+    <Compile Include="Mappings\EntityContactMapping.cs" />
+    <Compile Include="Mappings\EntityLayoutTemplateMapping.cs" />
+    <Compile Include="Mappings\EntityTypeMapping.cs" />
+    <Compile Include="Mappings\ErrorLogMapping.cs" />
+    <Compile Include="Mappings\FileStoreSettingMapping.cs" />
+    <Compile Include="Mappings\PhotoMapping.cs" />
+    <Compile Include="Mappings\PostalCodeMapping.cs" />
+    <Compile Include="Mappings\PublicHolidayMapping.cs" />
+    <Compile Include="Mappings\RecordInfoMapping.cs" />
+    <Compile Include="Mappings\RegionMapping.cs" />
+    <Compile Include="Mappings\SecurityConfigurationMapping.cs" />
+    <Compile Include="Mappings\SecurityProfileMapping.cs" />
+    <Compile Include="Mappings\StateMapping.cs" />
+    <Compile Include="Mappings\SystemEntityMapping.cs" />
+    <Compile Include="Mappings\SystemEntityRightDependencyMapping.cs" />
+    <Compile Include="Mappings\SystemEntityRightMapping.cs" />
+    <Compile Include="Mappings\SystemModuleMapping.cs" />
+    <Compile Include="Mappings\TimeZoneMapping.cs" />
+    <Compile Include="Mappings\UserBusinessProfileMapping.cs" />
+    <Compile Include="Mappings\Views\CompanyViewMapping.cs" />
+    <Compile Include="Models\AccessLog.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\ApplicationMenu.cs" />
+    <Compile Include="Models\ApplicationPage.cs" />
+    <Compile Include="Models\ApplicationPageAction.cs" />
+    <Compile Include="Models\ApplicationPageDetailField.cs" />
+    <Compile Include="Models\ApplicationPageGroup.cs" />
+    <Compile Include="Models\ApplicationPageListField.cs" />
+    <Compile Include="Models\ApplicationPageNavigation.cs" />
+    <Compile Include="Models\ApplicationPageService.cs" />
+    <Compile Include="Models\ApplicationRole.cs" />
+    <Compile Include="Models\ApplicationRoleRight.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\BusinessCategory.cs" />
+    <Compile Include="Models\BusinessCategoryMapType.cs" />
+    <Compile Include="Models\BusinessCategoryType.cs" />
+    <Compile Include="Models\BusinessProfile.cs" />
+    <Compile Include="Models\BusinessProfileAddress.cs" />
+    <Compile Include="Models\BusinessProfileDepartment.cs" />
+    <Compile Include="Models\BusinessProfileSite.cs" />
+    <Compile Include="Models\BusinessUnit.cs" />
+    <Compile Include="Models\Communication.cs" />
+    <Compile Include="Models\CommunicationFileStore.cs" />
+    <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\CompanyDepartment.cs" />
+    <Compile Include="Models\CompanyOperatingState.cs" />
+    <Compile Include="Models\CompanyRelationshipType.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\ContactAddress.cs" />
+    <Compile Include="Models\ContactBusinessProfile.cs" />
+    <Compile Include="Models\ContactOperatingCity.cs" />
+    <Compile Include="Models\ContactSpecialisation.cs" />
+    <Compile Include="Models\CostCentre.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\Currency.cs" />
+    <Compile Include="Models\CustomCategory.cs" />
+    <Compile Include="Models\CustomCategoryMapType.cs" />
+    <Compile Include="Models\CustomCategoryMapTypeOption.cs" />
+    <Compile Include="Models\CustomCategoryType.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\DocumentFileStore.cs" />
+    <Compile Include="Models\DocumentMetadata.cs" />
+    <Compile Include="Models\EmailAttachment.cs" />
+    <Compile Include="Models\EmailJobQueue.cs" />
+    <Compile Include="Models\EmailQueue.cs" />
+    <Compile Include="Models\EmailRecipentTo.cs" />
+    <Compile Include="Models\EmailRecipient.cs" />
+    <Compile Include="Models\EmailRecipientBcc.cs" />
+    <Compile Include="Models\EmailRecipientCc.cs" />
+    <Compile Include="Models\EmailRecipientTo.cs" />
+    <Compile Include="Models\EmailServer.cs" />
+    <Compile Include="Models\EmailTemplate.cs" />
+    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\EmployeeCostCentre.cs" />
+    <Compile Include="Models\EmployeeSite.cs" />
+    <Compile Include="Models\EntityContact.cs" />
+    <Compile Include="Models\EntityLayoutTemplate.cs" />
+    <Compile Include="Models\EntityType.cs" />
+    <Compile Include="Models\ErrorLog.cs" />
+    <Compile Include="Models\FileStoreSetting.cs" />
+    <Compile Include="Models\ITrackable.cs" />
+    <Compile Include="Models\IUniqueEntity.cs" />
+    <Compile Include="Models\Photo.cs" />
+    <Compile Include="Models\PostalCode.cs" />
+    <Compile Include="Models\PublicHoliday.cs" />
+    <Compile Include="Models\RecordInfo.cs" />
+    <Compile Include="Models\Region.cs" />
+    <Compile Include="Models\SecurityConfiguration.cs" />
+    <Compile Include="Models\SecurityProfile.cs" />
+    <Compile Include="Models\State.cs" />
+    <Compile Include="Models\SystemEntity.cs" />
+    <Compile Include="Models\SystemEntityRight.cs" />
+    <Compile Include="Models\SystemEntityRightDependency.cs" />
+    <Compile Include="Models\SystemModule.cs" />
+    <Compile Include="Models\TimeZone.cs" />
+    <Compile Include="Models\UserBusinessProfile.cs" />
+    <Compile Include="Models\Views\CompanyView.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository.cs" />
+    <Compile Include="StoredProcedureRepository.cs" />
+    <Compile Include="ViewRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Softcode.GTex.Configuration\Softcode.GTex.Configuration.csproj">
+      <Project>{6A5D010B-F6CC-43BC-B2CB-31BA3AC58A5A}</Project>
+      <Name>Softcode.GTex.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Softcode.GTex.Shared\Softcode.GTex.Shared.csproj">
+      <Project>{64cd8e57-86c4-4e00-b07b-f4c382a8c748}</Project>
+      <Name>Softcode.GTex.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

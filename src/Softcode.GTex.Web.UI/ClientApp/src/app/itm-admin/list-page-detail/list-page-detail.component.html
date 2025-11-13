@@ -1,0 +1,12 @@
+
+<div *ngIf="pageSchemaSource.fieldGroups!=undefined">
+
+    <div *ngFor="let item of pageSchemaSource.fieldGroups; let i = index">
+
+        <app-detail-group [groupSchemaSource]="item" [entityDataSource]="entityDataSource" [componentDataSource]="componentDataSource"></app-detail-group>
+
+        <pre>{{entityDataSource|json}}</pre>
+        <pre>{{item|json}}</pre>
+    </div>
+
+</div>

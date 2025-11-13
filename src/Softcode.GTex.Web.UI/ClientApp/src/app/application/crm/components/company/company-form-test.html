@@ -1,0 +1,221 @@
+<app-titlebar (save)="onSaveClicked()"></app-titlebar>
+
+<!--<pre>{{businessProfileSelectItems | json}}</pre>-->
+
+<form #companyForm="ngForm">
+    <div class="row">
+        <div class="col-sm-12 col-xl-6 col-lg-12 div-two-column-left">
+            <div class="card mb-1">
+                <div class="card-header" data-toggle="collapse" href="#collapseOne">
+                    <a class="card-title">
+                        General Information
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="row form-group">
+                        <div class="col-xl-3 ">
+                            <label for="txtAccountNumber">Account Number</label>
+                        </div>
+                        <div class="col-xl-9">
+                            <input type="text" name="accountNumber" class="form-control " id="txtAccountNumber" [(ngModel)]="company.accountNumber" #accountNumber="ngModel" [ngClass]="{'is-invalid': accountNumber.errors  && accountNumber.dirty}" required minlength="4" placeholder="Account Number">
+                            <div *ngIf="accountNumber.errors  && (accountNumber.dirty || accountNumber.touched)"
+                                 class="invalid-feedback">
+                                <p *ngIf="accountNumber.errors.required">
+                                    Account number is required.
+                                </p>
+                                <p *ngIf="accountNumber.errors.minlength">
+                                    Account number must be at least 4 characters long.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xl-3 ">
+                            <label for="txtName">Name</label>
+                        </div>
+                        <div class="col-xl-9">
+                            <input type="text" name="companyName" class="form-control" id="txtName" [(ngModel)]="company.companyName" placeholder="Name">
+                        </div>
+                    </div>
+
+                    <div class="row form-group ">
+                        <div class="col-xl-3 ">
+                            <label for="txtTradeAs">Trading As</label>
+                        </div>
+                        <div class="col-xl-9">
+                            <input type="text" name="tradeAs" class="form-control" id="txtTradeAs" [(ngModel)]="company.tradeAs" placeholder="Trading As">
+                        </div>
+
+                    </div>
+                    <div class="row form-group ">
+                        <div class="col-xl-3 ">
+                            <label for="txtABN">ABN</label>
+                        </div>
+                        <div class="col-xl-9">
+                            <input type="text" name="abn" class="form-control" id="txtABN" [(ngModel)]="company.abn" placeholder="ABN">
+                        </div>
+                    </div>
+                    <div class="row form-group ">
+                        <div class="col-xl-3 ">
+                            <label for="txtACN">ACN</label>
+                        </div>
+                        <div class="col-xl-9">
+                            <input type="text" name="acn" class="form-control" id="txtACN" [(ngModel)]="company.acn" placeholder="ACN">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header">
+                    Business Information
+                </div>
+                <div class="card-body">
+                    <div class="row form-group">
+                        <div class="col-xl-3">
+                            <label for="ddBusinessProfile">Business Profile</label>
+                        </div>
+                        <div class="col-xl-9">
+                            <select class="form-control" name="businessProfileId" [(ngModel)]="company.businessProfileId" id="ddBusinessProfile" data-btn-class="btn-primary">
+                                <option [ngValue]="-1">Select an Option</option>
+                                <option *ngFor="let c of businessProfileSelectItems" [ngValue]="c.id">{{c.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xl-3">
+                            <label for="txtNoOfEmployees">No of Employees</label>
+                        </div>
+                        <div class="col-xl-9">
+                            <input type="number" name="noOfEmployee" class="form-control" id="txtNoOfEmployees" [(ngModel)]="company.noOfEmployee" placeholder="No of Employees">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xl-3">
+                            <label for="exampleFormControlInput1">States</label>
+                        </div>
+                        <div class="col-xl-9">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xl-3">
+                            <label for="exampleFormControlInput1">Countries</label>
+                        </div>
+                        <div class="col-xl-9">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xl-3">
+                            <label for="exampleFormControlInput1">Relationship Type</label>
+                        </div>
+                        <div class="col-xl-9">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xl-3">
+                            <label for="exampleFormControlInput1">Industry</label>
+                        </div>
+                        <div class="col-xl-9">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xl-3">
+                            <label for="exampleFormControlInput1">Organisation Type</label>
+                        </div>
+                        <div class="col-xl-9">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xl-3">
+                            <label for="txtAnnualTurnover">Turnover</label>
+                        </div>
+                        <div class="col-xl-9">
+                            <input type="number" name="annualTurnover" class="form-control" id="txtAnnualTurnover" [(ngModel)]="company.annualTurnover" placeholder="Turnover">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xl-3">
+                            <label for="exampleFormControlInput1">Rating</label>
+                        </div>
+                        <div class="col-xl-9">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-xl-6 col-lg-12 div-two-column-right">
+            <div class="card mb-1">
+                <div class="card-header" data-toggle="collapse" href="#collapseTwo">
+                    <a class="card-title">
+                        Contact Details
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="row form-group">
+                        <div class="col-xl-3">
+                            <label for="txtMainPhone">Main Phone</label>
+                        </div>
+                        <div class="col-xl-9">
+                            <input type="text" name="mainPhone" class="form-control" id="txtMainPhone" [(ngModel)]="company.mainPhone" placeholder="Main Phone">
+                        </div>
+                    </div>
+                    <div class="row form-group ">
+                        <div class="col-xl-3">
+                            <label for="txtMobilePhone">Mobile Phone</label>
+                        </div>
+                        <div class="col-xl-9">
+                            <input type="text" name="mobilePhone" class="form-control" id="txtMobilePhone" [(ngModel)]="company.mobilePhone" placeholder="Mobile Phone">
+                        </div>
+                    </div>
+                    <div class="row form-group ">
+                        <div class="col-xl-3">
+                            <label for="txtFax">Fax</label>
+                        </div>
+                        <div class="col-xl-9">
+                            <input type="text" name="fax" class="form-control" id="txtFax" [(ngModel)]="company.fax" placeholder="Fax">
+                        </div>
+                    </div>
+                    <div class="row form-group ">
+                        <div class="col-xl-3">
+                            <label for="txtEmail">Email</label>
+                        </div>
+                        <div class="col-xl-9">
+                            <input type="email" name="email" class="form-control" id="txtEmail" [(ngModel)]="company.email" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="row form-group ">
+                        <div class="col-xl-3">
+                            <label for="txtWebsite">Website</label>
+                        </div>
+                        <div class="col-xl-9">
+                            <input type="text" name="website" class="form-control" id="txtWebsite" [(ngModel)]="company.website" placeholder="Website">
+                        </div>
+                    </div>
+                    <div class="row form-group ">
+                        <div class="col-xl-3">
+                            <label for="ddPreferredContactMethod">Preferred Contact Method</label>
+                        </div>
+                        <div class="col-xl-9">
+                            <input type="text" name="preferredContactMethodId" class="form-control" id="ddPreferredContactMethod" [(ngModel)]="company.preferredContactMethodId" placeholder="Preferred Contact Method">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header">
+                    Description
+                </div>
+                <div id="description" class="card-body">
+                    <div class="form-group ">
+                        <textarea class="form-control" name="description" id="txtDescription" rows="5" [(ngModel)]="company.description"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
